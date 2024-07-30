@@ -11,6 +11,12 @@ export const useStore = create((set) => ({
     set((state) => ({
       messages: [...state.messages, message]
     })),
+  updateLastMessage: (content) =>
+    set((state) => {
+      const messages = [...state.messages]
+      messages[messages.length - 1].content += content
+      return { messages }
+    }),
   resetMessages: () =>
     set({
       messages: [

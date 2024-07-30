@@ -1,3 +1,5 @@
+import Markdown from 'react-markdown'
+
 export function BoxMessage({ type, message }) {
   const classType =
     type === 'assistant'
@@ -11,7 +13,7 @@ export function BoxMessage({ type, message }) {
       }`}
     >
       <div className={`p-5 border leading-7 max-w-2xl rounded-md ${classType}`}>
-        {message}
+        <Markdown>{message}</Markdown>
       </div>
     </div>
   )

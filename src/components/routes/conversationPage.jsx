@@ -8,7 +8,7 @@ import { useStore } from '@/stores/useStore'
 
 export function ConversationPage() {
   const [input, setInput] = useState('')
-  const { messages, addMessage } = useStore()
+  const { messages, addMessage, updateLastMessage } = useStore()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e) => {
@@ -21,23 +21,46 @@ export function ConversationPage() {
     setInput('')
 
     try {
-      const response = await fetch('http://localhost:3000/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ messages: [...messages, newMessage] })
+      const eventSource = new EventSource(
+        `http://localhost:3000/completions?messages=${encodeURIComponent(
+          JSON.stringify([...messages, newMessage])
+        )}`
+      )
+
+      addMessage({
+        role: 'assistant',
+        content: ''
       })
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
+      eventSource.onmessage = (event) => {
+        if (event.data === '[DONE]') {
+          eventSource.close()
+        } else {
+          try {
+            const data = event.data.startsWith('data: ')
+              ? event.data.slice(6)
+              : event.data
+            const parsedData = JSON.parse(data)
+            const assistantMessage = parsedData.choices[0].delta.content
+            if (assistantMessage) {
+              updateLastMessage(assistantMessage)
+            }
+          } catch (error) {
+            console.error('Error parsing SSE message:', error)
+            console.log('Raw message:', event.data)
+          }
+        }
       }
 
-      const data = await response.json()
-      const assistantMessage = data.choices[0].message
-
-      addMessage(assistantMessage)
-      console.log(messages)
+      eventSource.onerror = (error) => {
+        console.error('EventSource error:', error)
+        addMessage({
+          role: 'assistant',
+          content:
+            'Lo siento, ha ocurrido un error. Por favor, inténtalo de nuevo.'
+        })
+        eventSource.close()
+      }
     } catch (error) {
       console.error('Error:', error)
       addMessage({
