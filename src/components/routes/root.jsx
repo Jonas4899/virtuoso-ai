@@ -4,14 +4,16 @@ import { Sidebar } from '../ui/sidebar.jsx'
 import { SidebarHeader } from '../ui/sidebarHeader.jsx'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { ChatList } from '../ui/ChatList.jsx'
-import { ChatListItem } from '../ui/chatListItem.jsx'
 import { Button } from '../ui/button.jsx'
+import { useStore } from '@/stores/useStore'
 
 export function Root() {
   const { theme, setTheme } = useTheme()
+  const { resetMessages } = useStore()
   const navigate = useNavigate()
 
   const handleRedirectionNewChat = () => {
+    resetMessages()
     navigate('/new-chat')
   }
 
