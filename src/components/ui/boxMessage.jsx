@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown'
+import { MarkdownRenderer } from './MarkdownRenderer'
 
 export function BoxMessage({ type, message }) {
   const classType =
@@ -13,7 +13,7 @@ export function BoxMessage({ type, message }) {
       }`}
     >
       <div className={`p-5 border leading-7 max-w-2xl rounded-md ${classType}`}>
-        <Markdown>{message}</Markdown>
+        <MarkdownRenderer content={message} />
       </div>
     </div>
   )

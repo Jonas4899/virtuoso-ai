@@ -6,9 +6,9 @@ export function SidebarHeader() {
     <div className="flex items-center gap-3 w-full">
       <Avatar className="w-8 h-8">
         <AvatarImage src={avatarImg} />
-        <AvatarFallback>Luffy D. Monkey Avatar</AvatarFallback>
+        <AvatarFallback>Virtuoso Avatar</AvatarFallback>
       </Avatar>
-      <h3 className="leading-7">Luffy D. Monkey</h3>
+      <h3 className="leading-7">Virtuoso AI</h3>
     </div>
   )
 }
