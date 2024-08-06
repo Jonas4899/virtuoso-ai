@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { HomePage } from './components/routes/homePage.jsx'
 import { Root } from './components/routes/root.jsx'
 import { ConversationPage } from './components/routes/conversationPage.jsx'
 import './index.css'
@@ -12,7 +13,11 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: '/new-chat',
+        index: true,
+        element: <HomePage />
+      },
+      {
+        path: '/new-conversation',
         element: <ConversationPage />
       }
     ]

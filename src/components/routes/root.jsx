@@ -3,19 +3,10 @@ import { Switch } from '../ui/switch.jsx'
 import { Sidebar } from '../ui/sidebar.jsx'
 import { SidebarHeader } from '../ui/sidebarHeader.jsx'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { ChatList } from '../ui/ChatList.jsx'
-import { Button } from '../ui/button.jsx'
-import { useStore } from '@/stores/useStore'
 
 export function Root() {
   const { theme, setTheme } = useTheme()
-  const { resetMessages } = useStore()
-  const navigate = useNavigate()
-
-  const handleRedirectionNewChat = () => {
-    resetMessages()
-    navigate('/new-chat')
-  }
+  // const navigate = useNavigate()
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
@@ -26,10 +17,6 @@ export function Root() {
       <Sidebar>
         <div className="w-full flex flex-col gap-6">
           <SidebarHeader />
-          <Button variant="outline" onClick={handleRedirectionNewChat}>
-            New Chat
-          </Button>
-          <ChatList></ChatList>
         </div>
         <Switch onCheckedChange={toggleTheme} />
       </Sidebar>
