@@ -1,21 +1,21 @@
-import { LogoVirtuoso } from '../resources/logo_virtuoso.jsx'
+import { LogoVirtuoso } from "../resources/logo_virtuoso.jsx";
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle
-} from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { useNavigate } from 'react-router-dom'
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 export function HomePage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleStartConversation = () => {
-    navigate('/new-conversation')
-  }
+    navigate("/conver-config");
+  };
 
   return (
     <div className="flex flex-col justify-center items-center gap-10 h-full">
@@ -42,5 +42,5 @@ export function HomePage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

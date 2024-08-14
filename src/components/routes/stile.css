@@ -1,0 +1,189 @@
+body {
+    background: rgba(0, 0, 0, 0.959);
+}
+
+.caja {
+    background-color: rgba(37, 37, 37, 0.921);
+    transition: background-color 1s linear;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgb(255, 255, 255);
+    margin: 5px;
+    color: rgb(71, 147, 147);
+    text-align: center;
+    float: left;
+    position: relative;
+    line-height: 180px;
+    font-size: 40px;
+    font-family: Arial;
+    border-radius: 25%;
+
+}
+
+
+
+.caja1 {
+    background-color: rgb(242, 228, 35);
+    color: rgb(247, 247, 247);
+    border: 2px solid rgb(0, 0, 0);
+    background-image: url('..');
+    transition: background-image 2s linear;
+    transition: boderate 1s linear, font-size 2s ease;
+    transition: 1s linear;
+
+
+
+
+
+
+
+
+}
+
+.caja1:hover {
+    background-image: url('../resources/illustration-of-book-icon-free-vector.jpg');
+    width: 200px;
+    color: rgb(253, 240, 63, 0.921);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-size: 100%;
+    line-height: 350px;
+
+    transform: translateY(5%);
+
+
+}
+
+
+.caja2 {
+    background-color: rgba(203, 118, 38, 0.921);
+    color: rgb(247, 247, 247);
+    border: 2px solid rgb(0, 0, 0);
+    background-image: url('..');
+    transition: background-image 2s linear;
+    transition: boderate 1s linear, font-size 2s ease;
+    transition: 1s linear;
+
+}
+
+.caja2:hover {
+    background-image: url('../resources/pila_de_libros.png');
+    width: 200px;
+    color: rgba(253, 107, 63, 0.921);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-size: 100%;
+    line-height: 350px;
+
+
+    transform: translateY(5%);
+
+}
+
+.caja3 {
+    background-color: rgba(246, 68, 157, 0.921);
+    color: rgb(247, 247, 247);
+    border: 2px solid rgb(0, 0, 0);
+    background-image: url('..');
+    transition: background-image 2s linear;
+    transition: boderate 1s linear, font-size 2s ease;
+    transition: 1s linear;
+}
+
+.caja3:hover {
+    background-image: url('../resources/lapiz.png');
+    width: 200px;
+    color: rgb(246, 68, 157, 0.921);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-size: 100%;
+    line-height: 350px;
+    background-size: 100%;
+    font-size: 100%;
+    line-height: 350px;
+
+    transform: translateY(5%);
+
+}
+
+.caja4 {
+    background-color: rgba(99, 214, 252, 0.921);
+    color: rgb(247, 247, 247);
+    border: 2px solid rgb(0, 0, 0);
+    background-image: url('..');
+    transition: background-image 2s linear;
+    transition: boderate 1s linear, font-size 2s ease;
+    transition: 1s linear;
+
+}
+
+.caja4:hover {
+    background-image: url('../resources/interactuar.png');
+    width: 200px;
+    color: rgba(99, 214, 252, 0.921);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-size: 100%;
+    line-height: 350px;
+    background-size: 100%;
+    font-size: 100%;
+    line-height: 350px;
+
+    transform: translateY(5%);
+
+}
+
+.caja5 {
+    background-color: rgba(253, 240, 63, 0.921);
+    color: rgb(247, 247, 247);
+    border: 2px solid rgb(0, 0, 0);
+    background-image: url('..');
+    transition: background-image 2s linear;
+    transition: boderate 1s linear, font-size 2s ease;
+    transition: 1s linear;
+}
+
+.caja5:hover {
+    background-image: url('../resources/medalla.png');
+    background-color: rgb(255, 255, 255);
+    width: 200px;
+    color: rgb(253, 240, 63, 0.921);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 100% 85%;
+    font-size: 100%;
+    line-height: 350px;
+
+
+    transform: translateY(5%);
+
+}
+
+.caja6 {
+    background-color: rgb(144, 73, 237);
+    color: rgb(247, 247, 247);
+    border: 2px solid rgb(0, 0, 0);
+    background-image: url('..');
+    transition: background-image 1s linear;
+    transition: boderate 1s linear, font-size 2s ease;
+    transition: 1s linear;
+}
+
+.caja6:hover {
+    background-image: url('../resources/birrete.png');
+    width: 200px;
+    color: rgb(144, 73, 237);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    font-size: 100%;
+    line-height: 350px;
+
+    transform: translateY(5%);
+
+}
