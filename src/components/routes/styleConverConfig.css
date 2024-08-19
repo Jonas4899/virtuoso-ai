@@ -1,0 +1,139 @@
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.caja {
+  background-color: rgba(37, 37, 37, 0.921);
+  transition: background-color 0.5s linear, transform 0.3s ease;
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid rgb(255, 255, 255);
+  color: rgb(71, 147, 147);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-family: Arial;
+  border-radius: 25%;
+  padding: 1rem;
+}
+
+.caja:hover {
+  transform: translateY(-5px);
+}
+
+/* Estilos específicos para cada caja */
+.caja1 {
+  background-color: rgb(242, 228, 35);
+  color: rgb(247, 247, 247);
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.caja1:hover {
+  background-image: url('../resources/illustration-of-book-icon-free-vector.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+
+  & span {
+    display: none;
+  }
+}
+
+.caja2 {
+  background-color: rgba(203, 118, 38, 0.921);
+  color: rgb(247, 247, 247);
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.caja2:hover {
+  background-image: url('../resources/pila_de_libros.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+
+  & span {
+    display: none;
+  }
+}
+
+.caja3 {
+  background-color: rgba(246, 68, 157, 0.921);
+  color: rgb(247, 247, 247);
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.caja3:hover {
+  background-image: url('../resources/lapiz.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+
+  & span {
+    display: none;
+  }
+}
+
+.caja4 {
+  background-color: rgba(99, 214, 252, 0.921);
+  color: rgb(247, 247, 247);
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.caja4:hover {
+  background-image: url('../resources/interactuar.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+
+  & span {
+    display: none;
+  }
+}
+
+.caja5 {
+  background-color: rgba(253, 240, 63, 0.921);
+  color: rgb(247, 247, 247);
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.caja5:hover {
+  background-image: url('../resources/medalla.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+
+  & span {
+    display: none;
+  }
+}
+
+.caja6 {
+  background-color: rgb(144, 73, 237);
+  color: rgb(247, 247, 247);
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.caja6:hover {
+  background-image: url('../resources/birrete.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+
+  & span {
+    display: none;
+  }
+}
+
+.selected {
+  border-color: blue; /* Ejemplo de borde azul para la caja seleccionada */
+  background-color: rgba(
+    0,
+    123,
+    255,
+    0.5
+  ); /* Ejemplo de cambio de color de fondo */
+}
