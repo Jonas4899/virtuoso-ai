@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { useStore } from '@/stores/useStore'
+import { useNavigate } from 'react-router-dom'
 import './styleConverConfig.css'
 
 export function ConverConfig() {
   const [selectedLevel, setSelectedLevel] = useState('')
   const [topic, setTopic] = useState('')
+  const { setConversationTopic, setConversationLevel } = useStore()
+  const navigate = useNavigate()
 
   const handleLevelClick = (level) => {
     setSelectedLevel(level)
@@ -14,9 +18,9 @@ export function ConverConfig() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (selectedLevel && topic) {
-      console.log('Selected Level:', selectedLevel)
-      console.log('Topic:', topic)
-      // Aquí puedes manejar el envío del formulario, como enviarlo a una API
+      setConversationLevel(selectedLevel)
+      setConversationTopic(topic)
+      navigate('/new-conversation')
     } else {
       alert('Please select a level and enter a topic.')
     }
