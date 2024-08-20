@@ -15,6 +15,10 @@ export function ConverConfig() {
     setSelectedLevel(level)
   }
 
+  const handleTopicClick = (topic) => {
+    setTopic(topic)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if (selectedLevel && topic) {
@@ -28,13 +32,12 @@ export function ConverConfig() {
 
   return (
     <form className="grid place-items-center h-full" onSubmit={handleSubmit}>
-      <div className="flex flex-col gap-6 items-center">
-        <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight">
+      <div className="flex flex-col gap-8 items-center">
+        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
           Conversation practice ✏️
         </h2>
-        <p className="leading-7">
-          Enter a topic and choose your English level below to start chatting
-          with our AI and improve your English skills.
+        <p className="text-md text-muted-foreground">
+          Select your English level.
         </p>
         <div className="contenedor">
           <div
@@ -74,14 +77,40 @@ export function ConverConfig() {
             <span>C2</span>
           </div>
         </div>
+        <p className="text-md text-muted-foreground">
+          Enter the topic you want to discuss and click &apos;Start&apos;
+        </p>
         <div className="flex gap-2 w-full">
           <Input
             className="w-full"
-            placeholder="Please enter the topic of your conversation"
+            placeholder="Type the topic you want to discuss (e.g., travel, hobbies, work...)"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
           />
           <Button type="submit">Start</Button>
+        </div>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            type="button"
+            onClick={() => handleTopicClick('Ordering food at a restaurant')}
+          >
+            Ordering food at a restaurant
+          </Button>
+          <Button
+            variant="outline"
+            type="button"
+            onClick={() => handleTopicClick('Talking about hobbies')}
+          >
+            Talking about hobbies
+          </Button>
+          <Button
+            variant="outline"
+            type="button"
+            onClick={() => handleTopicClick('Job interview practice')}
+          >
+            Job interview practice
+          </Button>
         </div>
       </div>
     </form>
