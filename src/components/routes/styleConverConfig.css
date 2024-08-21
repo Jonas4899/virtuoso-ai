@@ -129,11 +129,11 @@
 }
 
 .selected {
-  border-color: blue; /* Ejemplo de borde azul para la caja seleccionada */
-  background-color: rgba(
-    0,
-    123,
-    255,
-    0.5
-  ); /* Ejemplo de cambio de color de fondo */
+  background: rgb(238, 174, 202);
+  border: 2px solid white;
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
 }
