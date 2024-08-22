@@ -2,10 +2,7 @@ import { create } from 'zustand'
 
 export const useStore = create((set) => ({
   messages: [
-    {
-      role: 'assistant',
-      content: 'Hola, soy Virtuoso.ai, ¿en qué puedo ayudarte?'
-    }
+
   ],
   topic: '',
   level: '',
@@ -28,10 +25,7 @@ export const useStore = create((set) => ({
   resetMessages: () =>
     set({
       messages: [
-        {
-          role: 'assistant',
-          content: 'Hola, soy Virtuoso.ai, ¿en qué puedo ayudarte?'
-        }
+
       ]
     }),
 
