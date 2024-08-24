@@ -17,7 +17,7 @@ export function Root() {
   return (
     <>
       <Sidebar>
-        <div className="w-full flex flex-col gap-6">
+        <div>
           <SidebarHeader />
         </div>
         {location.pathname !== '/' && (
@@ -27,7 +27,7 @@ export function Root() {
         )}
         <Switch checked={theme === 'dark'} onCheckedChange={toggleTheme} />
       </Sidebar>
-      <div className="p-[50px]">
+      <div className="p-4 md:p-[50px]">
         <Outlet />
       </div>
     </>
