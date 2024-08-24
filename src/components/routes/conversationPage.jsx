@@ -135,15 +135,15 @@ Ahora, responde o realiza la tarea en el nivel de inglés: ${level}, ajustando t
       </ScrollArea>
       <form onSubmit={handleSubmit} className="flex gap-4">
         <Textarea
-          placeholder="Escribe lo que quieras a Virtuoso.ai"
-          id="message"
-          className="p-5"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          disabled={isLoading}
+            placeholder="Escribe lo que quieras a Virtuoso.ai"
+            id="message"
+            className="p-5"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            disabled={isLoading}
         />
         <Button type="submit" variant="outline" disabled={isLoading}>
-          <PaperPlaneIcon />
+          <PaperPlaneIcon/>
         </Button>
       </form>
     </div>
