@@ -1,22 +1,86 @@
-import { useState, useEffect } from "react";
-import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
-import { PaperPlaneIcon } from "@radix-ui/react-icons";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { BoxMessage } from "../ui/boxMessage";
-import { useStore } from "@/stores/useStore";
+import { useState, useEffect } from 'react'
+import { Textarea } from '../ui/textarea'
+import { Button } from '../ui/button'
+import { PaperPlaneIcon } from '@radix-ui/react-icons'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { BoxMessage } from '../ui/boxMessage'
+import { useStore } from '@/stores/useStore'
 
 export function ConversationPage() {
-  const [input, setInput] = useState("");
-  const { topic, level, messages, addMessage, updateLastMessage } = useStore();
-  const [isLoading, setIsLoading] = useState(false);
+  const [input, setInput] = useState('')
+  const { topic, level, messages, addMessage, updateLastMessage } = useStore()
+  const [isLoading, setIsLoading] = useState(false)
 
   const sendMessageToModel = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
 
-    if (messages.length === 0) {
+    const newMessage = { role: 'user', content: input }
+    addMessage(newMessage)
+    setInput('')
+
+    try {
+      const eventSource = new EventSource(
+        `http://localhost:3000/completions?messages=${encodeURIComponent(
+          JSON.stringify([...messages, newMessage])
+        )}`
+      )
+
       addMessage({
-        role: "system",
+        role: 'assistant',
+        content: ''
+      })
+
+      eventSource.onmessage = (event) => {
+        if (event.data === '[DONE]') {
+          eventSource.close()
+        } else {
+          try {
+            const data = event.data.startsWith('data: ')
+              ? event.data.slice(6)
+              : event.data
+            const parsedData = JSON.parse(data)
+            const assistantMessage = parsedData.choices[0].delta.content
+            if (assistantMessage) {
+              updateLastMessage(assistantMessage)
+            }
+          } catch (error) {
+            console.error('Error parsing SSE message:', error)
+            console.log('Raw message:', event.data)
+          }
+        }
+      }
+
+      eventSource.onerror = (error) => {
+        console.error('EventSource error:', error)
+        addMessage({
+          role: 'assistant',
+          content:
+            'Lo siento, ha ocurrido un error. Por favor, inténtalo de nuevo.'
+        })
+        eventSource.close()
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      addMessage({
+        role: 'assistant',
+        content:
+          'Lo siento, ha ocurrido un error. Por favor, inténtalo de nuevo.'
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!input.trim()) return
+    sendMessageToModel()
+  }
+
+  useEffect(() => {
+    const InitializeConversation = () => {
+      addMessage({
+        role: 'system',
         content: `Quiero que actúes como un hablante de inglés adaptado al nivel [A1, A2, B1, B2, C1, C2] según el Marco Común Europeo de Referencia para las Lenguas (MCER). Aquí te describo las características de cada nivel para que ajustes tu respuesta:
 
 - **A1**: Usa frases y expresiones cotidianas muy simples. Utiliza vocabulario básico y estructuras gramaticales simples.
@@ -45,107 +109,62 @@ Quiero que actúes como un hablante de inglés con un nivel C1 según el Marco C
 
 Quiero que actúes como un hablante de inglés con un nivel C2 según el Marco Común Europeo de Referencia para las Lenguas (MCER). Comunica tus ideas con total fluidez y precisión, como lo haría un hablante nativo. Utiliza un lenguaje complejo, adaptado a cualquier contexto, ya sea formal o informal. Muestra un dominio completo del idioma, incluyendo matices, expresiones idiomáticas y un vocabulario especializado.
 
-Ahora, responde o realiza la tarea en el nivel de inglés: ${level}, ajustando tu vocabulario, complejidad gramatical y tono de acuerdo a las características de ese nivel. Por ejemplo, para un nivel A2, utiliza un lenguaje sencillo y frases cortas; para un nivel C1, aplica un lenguaje avanzado y matices comunicativos. La conversación práctica debe centrarse en el siguiente tema: ${topic}. Proporciona retroalimentación si el usuario comete errores y, al final de la conversación, ofrece un resumen detallado sobre las áreas en las que el usuario puede mejorar y en qué aspectos debería enfocarse para avanzar.`,
-      });
+Ahora, responde o realiza la tarea en el nivel de inglés: ${level}, ajustando tu vocabulario, complejidad gramatical y tono de acuerdo a las características de ese nivel. Por ejemplo, para un nivel A2, utiliza un lenguaje sencillo y frases cortas; para un nivel C1, aplica un lenguaje avanzado y matices comunicativos. La conversación práctica debe centrarse en el siguiente tema: ${topic}. Proporciona retroalimentación si el usuario comete errores y, al final de la conversación, ofrece un resumen detallado sobre las áreas en las que el usuario puede mejorar y en qué aspectos debería enfocarse para avanzar.`
+      })
       addMessage({
-        role: "user",
-        content: " I am ready to start",
-      });
+        role: 'assistant',
+        content: "Tell me when You're ready to start! 🚀"
+      })
     }
 
-    const newMessage = { role: "user", content: input };
-    addMessage(newMessage);
-    setInput("");
-
-    try {
-      const eventSource = new EventSource(
-        `http://localhost:3000/completions?messages=${encodeURIComponent(
-          JSON.stringify([...messages, newMessage])
-        )}`
-      );
-
-      addMessage({
-        role: "assistant",
-        content: "",
-      });
-
-      eventSource.onmessage = (event) => {
-        if (event.data === "[DONE]") {
-          eventSource.close();
-        } else {
-          try {
-            const data = event.data.startsWith("data: ")
-              ? event.data.slice(6)
-              : event.data;
-            const parsedData = JSON.parse(data);
-            const assistantMessage = parsedData.choices[0].delta.content;
-            if (assistantMessage) {
-              updateLastMessage(assistantMessage);
-            }
-          } catch (error) {
-            console.error("Error parsing SSE message:", error);
-            console.log("Raw message:", event.data);
-          }
-        }
-      };
-
-      eventSource.onerror = (error) => {
-        console.error("EventSource error:", error);
-        addMessage({
-          role: "assistant",
-          content:
-            "Lo siento, ha ocurrido un error. Por favor, inténtalo de nuevo.",
-        });
-        eventSource.close();
-      };
-    } catch (error) {
-      console.error("Error:", error);
-      addMessage({
-        role: "assistant",
-        content:
-          "Lo siento, ha ocurrido un error. Por favor, inténtalo de nuevo.",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-    sendMessageToModel();
-  };
-
-  useEffect(() => {
-    sendMessageToModel();
-  }, []);
+    InitializeConversation()
+  }, [topic, level, addMessage])
 
   return (
     <div className="flex flex-col h-full justify-between gap-9">
       <ScrollArea className="h-[500px] w-full">
         <div className="p-5 flex flex-col gap-5">
-          {messages.map((message, index) => (
-            <BoxMessage
-              key={index}
-              type={message.role === "user" ? "user" : "assistant"}
-              message={message.content}
-            />
-          ))}
+          {messages
+            .filter((message, index) => {
+              if (
+                message.content === "Tell me when You're ready to start! 🚀"
+              ) {
+                // Encontrar el último mensaje que tiene este contenido
+                return (
+                  messages.findIndex(
+                    (msg) =>
+                      msg.content === "Tell me when You're ready to start! 🚀"
+                  ) === index
+                )
+              }
+              return true
+            })
+            .map((message, index) => {
+              if (message.role !== 'system') {
+                return (
+                  <BoxMessage
+                    key={index}
+                    type={message.role === 'user' ? 'user' : 'assistant'}
+                    message={message.content}
+                  />
+                )
+              }
+            })}
         </div>
       </ScrollArea>
       <form onSubmit={handleSubmit} className="flex gap-4">
         <Textarea
-            placeholder="Escribe lo que quieras a Virtuoso.ai"
-            id="message"
-            className="p-5"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            disabled={isLoading}
+          placeholder="Escribe lo que quieras a Virtuoso.ai"
+          id="message"
+          className="p-5"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          disabled={isLoading}
         />
         <Button type="submit" variant="outline" disabled={isLoading}>
-          <PaperPlaneIcon/>
+          <PaperPlaneIcon />
         </Button>
       </form>
     </div>
-  );
+  )
 }
