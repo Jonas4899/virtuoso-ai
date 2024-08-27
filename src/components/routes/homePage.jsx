@@ -20,7 +20,7 @@ export function HomePage() {
   return (
     <div className="flex flex-col justify-center items-center gap-10 h-full">
       <LogoVirtuoso width={200} height={200} />
-      <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+      <h2 className="scroll-m-20 pb-2 text-2xl md:text-3xl font-semibold tracking-tight first:mt-0">
         Welcome to Virtuoso.Ai
       </h2>
       <div className="flex gap-10">

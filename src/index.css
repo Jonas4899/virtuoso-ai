@@ -73,10 +73,15 @@ body {
 }
 
 #root {
-  display: grid;
+  display: flex;
   height: 100%;
   width: 100%;
-  grid-template-columns: 1fr 4fr;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
 }
 
 .active {

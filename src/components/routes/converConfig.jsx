@@ -80,16 +80,16 @@ export function ConverConfig() {
         <p className="text-md text-muted-foreground">
           Enter the topic you want to discuss and click &apos;Start&apos;
         </p>
-        <div className="flex gap-2 w-full">
+        <div className="flex gap-2 w-full flex-wrap md:flex-nowrap justify-center">
           <Input
             className="w-full"
             placeholder="Type the topic you want to discuss (e.g., travel, hobbies, work...)"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
           />
-          <Button type="submit">Start</Button>
+          <Button type="submit" className="w-[100px] md:w-auto">Start</Button>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap justify-center md:justify-start">
           <Button
             variant="outline"
             type="button"
