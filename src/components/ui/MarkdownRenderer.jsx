@@ -1,29 +1,25 @@
 import ReactMarkdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export function MarkdownRenderer({ content }) {
   return (
     <ReactMarkdown
       components={{
-        // code: ({inline, classname, children, ...props}) => {}
-        code({ inline, className, children, ...props }) {
-          const match = /language-(\w+)/.exec(className || '')
-          return !inline && match ? (
-            <SyntaxHighlighter
-              style={nightOwl}
-              language={match[1]}
-              PreTag="div"
-              {...props}
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
-          ) : (
-            <code className={className} {...props}>
-              {children}
-            </code>
-          )
-        }
+        blockquote: ({ children, ...props }) => (
+          <blockquote
+            style={{
+              borderLeft: '4px solid #007acc',
+              paddingLeft: '1em',
+              color: '#555',
+              fontStyle: 'italic',
+              margin: '1em 0',
+              backgroundColor: '#f5f5f5',
+              borderRadius: '4px'
+            }}
+            {...props}
+          >
+            {children}
+          </blockquote>
+        )
       }}
     >
       {content}
