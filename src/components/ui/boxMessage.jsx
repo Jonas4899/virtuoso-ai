@@ -4,7 +4,7 @@ export function BoxMessage({ type, message }) {
   const classType =
     type === 'assistant'
       ? 'border-primary bg-primary text-primary-foreground'
-      : 'border-input bg-input text-card-foreground'
+      : 'border-input bg-input text-primary-foreground'
 
   return (
     <div

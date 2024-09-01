@@ -1,9 +1,7 @@
 import { create } from 'zustand'
 
 export const useStore = create((set) => ({
-  messages: [
-
-  ],
+  messages: [],
   topic: '',
   level: '',
 
@@ -24,9 +22,7 @@ export const useStore = create((set) => ({
   // Función para reiniciar los mensajes
   resetMessages: () =>
     set({
-      messages: [
-
-      ]
+      messages: []
     }),
 
   // Función para actualizar el tema de la conversación
