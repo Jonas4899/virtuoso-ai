@@ -34,7 +34,7 @@ export function Root() {
         )}
         <Switch checked={theme === 'dark'} onCheckedChange={toggleTheme} />
       </Sidebar>
-      <div className="p-4 md:p-[50px]">
+      <div className="p-4 md:p-[50px] w-full">
         <Outlet />
       </div>
     </>
