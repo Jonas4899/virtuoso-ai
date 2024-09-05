@@ -73,6 +73,9 @@ module.exports = {
       },
       fontFamily: {
         geistSans: ['Geist', 'sans-serif']
+      },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(to top left, #6a3093, #a044ff)'
       }
     }
   },

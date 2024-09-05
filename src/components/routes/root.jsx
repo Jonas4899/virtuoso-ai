@@ -5,6 +5,7 @@ import { SidebarHeader } from '../ui/sidebarHeader.jsx'
 import { Button } from '../ui/button.jsx'
 import { useStore } from '@/stores/useStore.js'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { HomeIcon } from '@radix-ui/react-icons'
 
 export function Root() {
   const { theme, setTheme } = useTheme()
@@ -28,8 +29,9 @@ export function Root() {
           <SidebarHeader />
         </div>
         {location.pathname !== '/' && (
-          <Button variant="destructive" onClick={handleHomeBtn}>
-            Come back home
+          <Button className="flex gap-1 items-center" onClick={handleHomeBtn}>
+            <HomeIcon />
+            <span>Home</span>
           </Button>
         )}
         <Switch checked={theme === 'dark'} onCheckedChange={toggleTheme} />
