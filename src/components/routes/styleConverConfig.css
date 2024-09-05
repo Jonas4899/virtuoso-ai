@@ -10,7 +10,6 @@
   transition: background-color 0.5s linear, transform 0.3s ease;
   width: 4rem;
   height: 4rem;
-  border: 2px solid rgb(255, 255, 255);
   color: rgb(71, 147, 147);
   display: flex;
   align-items: center;
@@ -27,9 +26,8 @@
 
 /* Estilos específicos para cada caja */
 .caja1 {
-  background-color: rgb(242, 228, 35);
+  background-color: #df2935;
   color: rgb(247, 247, 247);
-  border: 2px solid rgb(0, 0, 0);
 }
 
 .caja1:hover {
@@ -44,9 +42,8 @@
 }
 
 .caja2 {
-  background-color: rgba(203, 118, 38, 0.921);
+  background-color: #6abea7;
   color: rgb(247, 247, 247);
-  border: 2px solid rgb(0, 0, 0);
 }
 
 .caja2:hover {
@@ -63,7 +60,6 @@
 .caja3 {
   background-color: rgba(246, 68, 157, 0.921);
   color: rgb(247, 247, 247);
-  border: 2px solid rgb(0, 0, 0);
 }
 
 .caja3:hover {
@@ -78,9 +74,8 @@
 }
 
 .caja4 {
-  background-color: rgba(99, 214, 252, 0.921);
+  background-color: #2e5eaa;
   color: rgb(247, 247, 247);
-  border: 2px solid rgb(0, 0, 0);
 }
 
 .caja4:hover {
@@ -95,9 +90,9 @@
 }
 
 .caja5 {
-  background-color: rgba(253, 240, 63, 0.921);
+  /* background-color: #ffc300; */
+  background-color: #ff9500;
   color: rgb(247, 247, 247);
-  border: 2px solid rgb(0, 0, 0);
 }
 
 .caja5:hover {
@@ -112,9 +107,8 @@
 }
 
 .caja6 {
-  background-color: rgb(144, 73, 237);
+  background-color: #e29578;
   color: rgb(247, 247, 247);
-  border: 2px solid rgb(0, 0, 0);
 }
 
 .caja6:hover {
@@ -129,11 +123,6 @@
 }
 
 .selected {
-  background: rgb(238, 174, 202);
-  border: 2px solid white;
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
-  );
+  background: linear-gradient(to top left, #6a3093, #a044ff);
+  box-shadow: 0px 0px 50px 7px #6a3093;
 }
