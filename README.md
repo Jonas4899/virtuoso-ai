@@ -1,19 +1,22 @@
 
-##Virtuoso.Ai
 
-![image](https://github.com/user-attachments/assets/0759f40b-48ea-446d-be7b-72d3703c2f02)
+# Virtuoso.Ai
+
+
+
+
 
 <p>
 Es una aplicación web de aprendizaje de idiomas potenciada por inteligencia artificial, que permita a los estudiantes practicar conversación en contextos específicos y generar pruebas de gramática con feedback inmediato, para mejorar la experiencia de aprendizaje y efectividad en el dominio de un idioma.
 </p>
 
-
+![image](https://github.com/user-attachments/assets/0759f40b-48ea-446d-be7b-72d3703c2f02)
 #### Descripción
 <p>
 El backend de la aplicación web Virtuoso.Ai es responsable de la gestión y organización de la funcionalidad del sitio. Está desarrollado utilizando Node.js y React, y emplea MongoDB como base de datos. Además, se integra con la API de ChatGPT-4 para proporcionar capacidades avanzadas de inteligencia artificial. El uso de estas tecnologías permite una experiencia fluida y escalable tanto en la gestión de datos como en las interacciones con los usuarios.
 </p>
 
-### Tecnologías Utilizadas
+### Dependencias
 - Node.js
 - React
 - Javascript
