@@ -17,11 +17,27 @@ El backend de la aplicación web Virtuoso.Ai es responsable de la gestión y org
 </p>
 
 ### Dependencias
-- Node.js
-- React
-- Javascript
-- MongoDB
-- Css
+  - @radix-ui/react-alert-dialog: 1.1.1
+  - @radix-ui/react-avatar: 1.1.0
+  -  @radix-ui/react-icons: 1.3.0
+  -  @radix-ui/react-navigation-menu: 1.2.0
+  -  @radix-ui/react-popover: 1.1.1
+  -  @radix-ui/react-scroll-area: 1.1.0
+  -  @radix-ui/react-slot: 1.1.0
+  -  @radix-ui/react-switch:1 .1.0
+  -  class-variance-authority: 0.7.0
+  -  clsx: 2.1.1
+  -  github-markdown-css: 5.6.1
+  -  prismjs: 1.29.0
+  -  react: 18.3.1
+  -  react-dom: 18.3.1
+  -  react-markdown: 9.0.1
+  -  react-router-dom: 6.25.1
+  -  react-syntax-highlighter: 15.5.0
+  -  tailwind-merge: 2.4.0
+  -  tailwindcss-animate: 1.0.7
+  -  zustand: 4.5.4
+
 
 ### Instalación
 ###### Clona este repositorio:
