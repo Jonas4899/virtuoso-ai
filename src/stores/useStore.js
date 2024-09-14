@@ -1,14 +1,34 @@
 import { create } from 'zustand'
 
 export const useStore = create((set) => ({
+  currentIdChat: '',
   messages: [],
   topic: '',
   level: '',
+  chats: [],
+
+  // Funciones para manejar los chats
+  setChats: (chats) => set({ chats }),
+
+  addChat: (chat) =>
+    set((state) => ({
+      chats: [...state.chats, chat]
+    })),
+
+  removeChat: (chatId) =>
+    set((state) => ({
+      chats: state.chats.filter((chat) => chat.id !== chatId)
+    })),
 
   // Función para agregar un mensaje
   addMessage: (message) =>
     set((state) => ({
       messages: [...state.messages, message]
+    })),
+
+  setMessages: (messages) =>
+    set(() => ({
+      messages
     })),
 
   // Función para actualizar el contenido del último mensaje
@@ -35,5 +55,16 @@ export const useStore = create((set) => ({
   setConversationLevel: (level) =>
     set(() => ({
       level
-    }))
+    })),
+
+  // Función para actualizar el id del chat actual
+  setCurrentIdChat: (currentIdChat) =>
+    set(() => ({
+      currentIdChat
+    })),
+
+  resetCurrentIdChat: () =>
+    set({
+      currentIdChat: ''
+    })
 }))

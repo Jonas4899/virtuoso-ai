@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { LogoVirtuoso } from '../resources/logo_virtuoso.jsx'
 import {
   Card,
@@ -11,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
 
 export function HomePage() {
+  const [isHovered, setIsHovered] = useState(false)
   const navigate = useNavigate()
 
   const handleStartConversation = () => {
@@ -35,7 +37,17 @@ export function HomePage() {
             </CardDescription>
           </CardContent>
           <CardFooter className="flex justify-center">
-            <Button onClick={handleStartConversation}>
+            {/* <Button onClick={handleStartConversation}>
+              Start conversation 🚀
+            </Button> */}
+            <Button
+              className={`bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 ease-in-out ${
+                isHovered ? 'animate-pulse' : ''
+              }`}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onClick={handleStartConversation}
+            >
               Start conversation 🚀
             </Button>
           </CardFooter>

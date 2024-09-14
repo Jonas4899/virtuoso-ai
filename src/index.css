@@ -4,10 +4,6 @@
 
 @layer base {
   :root {
-    /* Name: custom color palette
-       Author: Ilias Ism
-       URL: https://gradient.page */
-
     /* CSS: .bg-gradient { background: var(--gradient) } */
     --gradient: linear-gradient(to top left, #243949, #517fa4);
     --background: 219 96.7% 98.44%;
@@ -42,9 +38,6 @@
     --radius: 0.5rem;
   }
   .dark {
-    /* Name: custom color palette
-       Author: Ilias Ism
-       URL: https://gradient.page */
     --gradient: linear-gradient(to top left, #6a3093, #a044ff);
     --background: 292 33.15% 3.04%;
     --foreground: 292 5.1% 96.9%;
@@ -88,20 +81,23 @@
 
 body {
   height: 100vh;
+  overflow-x: hidden;
 }
 
 #root {
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
-  @media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 768px) {
+  #root {
     flex-direction: row;
-  }
-  @media screen and (max-width: 767px) {
-    flex-direction: column;
   }
 }
 
 .active {
   @apply bg-primary text-primary-foreground;
 }
+

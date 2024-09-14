@@ -8,7 +8,7 @@ export function BoxMessage({ type, message }) {
 
   return (
     <div
-      className={`flex w-full ${
+      className={`flex w-full mb-10 ${
         type === 'assistant' ? 'justify-end' : 'justify-start'
       }`}
     >

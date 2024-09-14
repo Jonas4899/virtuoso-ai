@@ -21,8 +21,12 @@ const router = createBrowserRouter([
         path: '/conver-config',
         element: <ConverConfig />
       },
+      // {
+      //   path: '/new-conversation',
+      //   element: <ConversationPage />
+      // },
       {
-        path: '/new-conversation',
+        path: 'chat/:chatId',
         element: <ConversationPage />
       }
     ]

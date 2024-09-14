@@ -3,12 +3,17 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useStore } from '@/stores/useStore'
 import { useNavigate } from 'react-router-dom'
+import { useChatMessages } from '@/hooks/useChatMessages'
+import { useChatManagement } from '@/hooks/useChatManagement'
 import './styleConverConfig.css'
 
 export function ConverConfig() {
   const [selectedLevel, setSelectedLevel] = useState('')
   const [topic, setTopic] = useState('')
-  const { setConversationTopic, setConversationLevel } = useStore()
+  const { setConversationTopic, setConversationLevel, setCurrentIdChat } =
+    useStore()
+  const { initializeConversation } = useChatMessages()
+  const { createNewChat } = useChatManagement()
   const navigate = useNavigate()
 
   const handleLevelClick = (level) => {
@@ -19,12 +24,31 @@ export function ConverConfig() {
     setTopic(topic)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (selectedLevel && topic) {
       setConversationLevel(selectedLevel)
       setConversationTopic(topic)
-      navigate('/new-conversation')
+      const initialMessages = initializeConversation(selectedLevel, topic)
+
+      try {
+        console.log(initialMessages)
+        const newChatId = await createNewChat(initialMessages, topic)
+
+        if (newChatId) {
+          setCurrentIdChat(newChatId)
+          navigate(`/chat/${newChatId}`)
+        } else {
+          alert(
+            'Ocurrió un error al crear el chat. Por favor, inténtalo de nuevo.'
+          )
+        }
+      } catch (err) {
+        console.error('Error al crear el chat:', err)
+        alert(
+          'Ocurrió un error al crear el chat. Por favor, inténtalo de nuevo.'
+        )
+      }
     } else {
       alert('Please select a level and enter a topic.')
     }
@@ -87,7 +111,9 @@ export function ConverConfig() {
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
           />
-          <Button type="submit" className="w-[100px] md:w-auto">Start</Button>
+          <Button type="submit" className="w-[100px] md:w-auto">
+            Start
+          </Button>
         </div>
         <div className="flex gap-2 flex-wrap justify-center md:justify-start">
           <Button
