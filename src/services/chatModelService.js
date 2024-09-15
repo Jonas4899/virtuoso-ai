@@ -6,7 +6,7 @@ export const chatModelService = (
 ) => {
   return new Promise((resolve, reject) => {
     const eventSource = new EventSource(
-      `http://localhost:3000/completions?messages=${encodeURIComponent(
+      `${import.meta.env.VITE_API_URL}/completions?messages=${encodeURIComponent(
         JSON.stringify([...messages, newMessage])
       )}`
     )

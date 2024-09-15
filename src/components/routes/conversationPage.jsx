@@ -64,7 +64,7 @@ export function ConversationPage() {
 
       <form onSubmit={handleSubmit} className="flex gap-4">
         <Textarea
-          placeholder="Escribe lo que quieras a Virtuoso.ai"
+          placeholder="Write here to Virtuoso.ai"
           id="message"
           className="p-5"
           value={input}
