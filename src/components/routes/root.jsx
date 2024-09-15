@@ -91,7 +91,7 @@ export function Root() {
 
 function SidebarContent({ chats, handleHomeBtn, handleChatSelect, toggleTheme, theme }) {
   return (
-    <div className='flex flex-col h-full justify-between items-center gap-10'>
+    <div className='flex flex-col h-full justify-between items-center gap-10 p-10'>
       <div className="flex flex-col gap-10">
         <div>
           <SidebarHeader />
