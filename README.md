@@ -18,9 +18,15 @@ Es una aplicación web de aprendizaje de idiomas potenciada por inteligencia art
 El backend de la aplicación web Virtuoso.Ai es responsable de la gestión y organización de la funcionalidad del sitio. Está desarrollado utilizando Node.js y React, y emplea MongoDB como base de datos. Además, se integra con la API de ChatGPT-4 para proporcionar capacidades avanzadas de inteligencia artificial. El uso de estas tecnologías permite una experiencia fluida y escalable tanto en la gestión de datos como en las interacciones con los usuarios.
 </p>
 <br>
+<br>
 
 ### pages :purple_heart:
 ----
+
+
+<br>
+<br>
+
 #### Pagina principal
 ----
 ![Captura de pantalla 2024-09-15 234950](https://github.com/user-attachments/assets/a934534a-8522-43b9-9c98-0372fbf8228e)
@@ -30,6 +36,12 @@ El backend de la aplicación web Virtuoso.Ai es responsable de la gestión y org
 #### Chat de interaccion de Virtuoso.Ai
 ----
 ![Captura de pantalla 2024-09-15 235059](https://github.com/user-attachments/assets/5cf19ad4-64b2-463b-ac43-13a84432841a)
+
+<br>
+ 
+### Enlace
+----
+Enlace a ***[Virtuoso.Ai](https://virtuoso-ai.vercel.app/)***.
 
 <br>
 
