@@ -17,6 +17,7 @@ Es una aplicación web de aprendizaje de idiomas potenciada por inteligencia art
 <p>
 El backend de la aplicación web Virtuoso.Ai es responsable de la gestión y organización de la funcionalidad del sitio. Está desarrollado utilizando Node.js y React, y emplea MongoDB como base de datos. Además, se integra con la API de ChatGPT-4 para proporcionar capacidades avanzadas de inteligencia artificial. El uso de estas tecnologías permite una experiencia fluida y escalable tanto en la gestión de datos como en las interacciones con los usuarios.
 </p>
+<br>
 
 
 ### Features
@@ -49,7 +50,7 @@ El backend de la aplicación web Virtuoso.Ai es responsable de la gestión y org
      <ul><li>Adaptación de los ejercicios y conversaciones según los intereses y objetivos del usuario.</li><li>Creación de rutas de aprendizaje individualizadas.</li>
      </ul>
 
-</ol>
+</ol><br>
 
 ### Dependencias
 ------
@@ -74,12 +75,19 @@ El backend de la aplicación web Virtuoso.Ai es responsable de la gestión y org
   -  tailwindcss-animate: 1.0.7
   -  zustand: 4.5.4
 
+<br>
 
 ### Instalación
 -------
 ###### Clona este repositorio:
 
 `$ git clone https://github.com/Jonas4899/virtuoso-ai.git`
+###### Clona otro repositorio:
+
+<p>Es fundamental clonar el repositorio, ya que contiene la API de la aplicación y garantiza su funcionamiento adecuado. Por motivos de seguridad, la API está alojada en un repositorio separado.
+
+</p>
+
 ###### Instala las dependencias:
 
 `$npm install`
@@ -87,6 +95,13 @@ El backend de la aplicación web Virtuoso.Ai es responsable de la gestión y org
 ###### iniciar la pagina enel terminal
 `$npm run dev`
 
+### Autores
+-----
+
+<p>Jonathan Salcedo :kissing_heart:</p>
+<p>Silvana Gonzales :sunglasses:</p>
+<p>Kevin David Rueda :alien:</p>
+<br>
 
 
 
